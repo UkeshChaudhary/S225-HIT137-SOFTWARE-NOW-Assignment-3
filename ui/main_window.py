@@ -34,12 +34,22 @@ class MainWindow(tk.Tk):
         self._build_menu()
         self._build_header()
         self._build_body()
+        
+        # Fullscreen state and shortcuts
+        self.is_fullscreen = False
+        self.bind("<F11>", lambda e: self.toggle_fullscreen())
+        self.bind("<Escape>", lambda e: self.exit_fullscreen())
 
     def _build_menu(self):
         menubar = tk.Menu(self)
         filemenu = tk.Menu(menubar, tearoff=0)
         filemenu.add_command(label="Exit", command=self.destroy)
         menubar.add_cascade(label="File", menu=filemenu)
+
+        viewmenu = tk.Menu(menubar, tearoff=0)
+        viewmenu.add_command(label="Toggle Full Screen (F11)", command=self.toggle_fullscreen)
+        viewmenu.add_command(label="Exit Full Screen (Esc)", command=self.exit_fullscreen)
+        menubar.add_cascade(label="View", menu=viewmenu)
 
         modelmenu = tk.Menu(menubar, tearoff=0)
         modelmenu.add_command(label="Load Model", command=self.load_model)
@@ -50,6 +60,14 @@ class MainWindow(tk.Tk):
         menubar.add_cascade(label="Help", menu=helpmenu)
 
         self.config(menu=menubar)
+
+    def toggle_fullscreen(self):
+        self.is_fullscreen = not self.is_fullscreen
+        self.attributes("-fullscreen", self.is_fullscreen)
+
+    def exit_fullscreen(self):
+        self.is_fullscreen = False
+        self.attributes("-fullscreen", False)
 
     def _build_header(self):
         container = ttk.Frame(self, padding=(10, 8))
