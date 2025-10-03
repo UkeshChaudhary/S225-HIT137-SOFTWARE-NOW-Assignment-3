@@ -77,7 +77,7 @@ class MainWindow(tk.Tk):
 
         self.model_combo = ttk.Combobox(
             container,
-            values=["ViT (Classify)", "DeiT (Classify)"],
+            values=["ViT (Classify)", "DeiT (Classify)", "ResNet-18 (Classify)"],
             state="readonly",
             width=22,
         )
@@ -131,6 +131,8 @@ class MainWindow(tk.Tk):
         selection = self.model_combo.get()
         if "deit" in selection.lower():
             return "deit"
+        if "resnet" in selection.lower():
+            return "resnet"
         return "vit"
 
     def load_model(self):
