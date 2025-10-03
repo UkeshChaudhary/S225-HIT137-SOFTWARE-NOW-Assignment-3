@@ -54,7 +54,12 @@ python main.py
 
 ### Video
 
-[![Watch the video](https://github.com/UkeshChaudhary/S225-HIT137-SOFTWARE-NOW-Assignment-3/raw/rojina/assets/thumbnail.png)](https://github.com/UkeshChaudhary/S225-HIT137-SOFTWARE-NOW-Assignment-3/raw/rojina/assets/Tkinter%20AI%20GUI%202025-10-03%2013-37-51.mp4)
+<video width="600" controls muted>
+  <source src="https://github.com/UkeshChaudhary/S225-HIT137-SOFTWARE-NOW-Assignment-3/raw/rojina/assets/Tkinter%20AI%20GUI%202025-10-03%2013-37-51.mp4" type="video/mp4">
+  Your browser does not support embedded videos. 
+  <a href="https://github.com/UkeshChaudhary/S225-HIT137-SOFTWARE-NOW-Assignment-3/raw/rojina/assets/Tkinter%20AI%20GUI%202025-10-03%2013-37-51.mp4">Watch the video</a>.
+  
+</video>
 
 ### Method
 
