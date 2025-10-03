@@ -77,7 +77,7 @@ class MainWindow(tk.Tk):
 
         self.model_combo = ttk.Combobox(
             container,
-            values=["ViT (Classify)", "DeiT (Classify)", "ResNet-18 (Classify)"],
+            values=["ViT (Classify)",],
             state="readonly",
             width=22,
         )
