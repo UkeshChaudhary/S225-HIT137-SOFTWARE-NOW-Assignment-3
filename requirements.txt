@@ -3,4 +3,5 @@
 torch
 transformers
 pillow
-tkinter
+requests
+# tkinter is a built-in package (kept for reference)
