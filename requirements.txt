@@ -1,0 +1,6 @@
+# requirements.txt includes all the required packages for the project
+
+torch
+transformers
+pillow
+tkinter
