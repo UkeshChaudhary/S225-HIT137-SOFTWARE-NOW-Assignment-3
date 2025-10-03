@@ -52,6 +52,13 @@ python main.py
 
 ## Using the GUI
 
+### Video
+
+[![Watch the video](https://github.com/UkeshChaudhary/S225-HIT137-SOFTWARE-NOW-Assignment-3/raw/rojina/assets/thumbnail.png)](https://github.com/UkeshChaudhary/S225-HIT137-SOFTWARE-NOW-Assignment-3/raw/rojina/assets/Tkinter%20AI%20GUI%202025-10-03%2013-37-51.mp4)
+
+
+### Method
+
 - **Model Selection**: choose between `ViT` and `ResNet`, then click `Load Model`.
 - **User Input**: select `Image` and click `Browse` to pick an image; a preview is shown at the right.
 - **Run**: press `Run Model 1` or `Run Model 2` to classify the selected image. Predictions are listed in the Output box.
