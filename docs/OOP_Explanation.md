@@ -4,8 +4,7 @@
 - **BaseModel (Abstract)**: defines the common interface.
   - `models/base_model.py` provides the abstract class with `predict(image_path)`.
 - **Concrete Models**:
-  - `models/vit_model.py` implements `ViTModel` using the transformers `image-classification` pipeline.
-  - `models/resnet_model.py` implements `ResNetModel` similarly.
+  - `models/vit_model.py` implements `ViTModel` using the transformers 
 - **Model Factory**:
   - `models/model_factory.py#get_model(model_key)` returns the correct model instance based on a key.
 - **Configuration**:
