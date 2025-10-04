@@ -11,7 +11,8 @@ class ViTModel(BaseModel):
         # explicitly use slow image processor
         self.processor = AutoImageProcessor.from_pretrained(model_name, use_fast=False)
         self.model = AutoModelForImageClassification.from_pretrained(model_name)
-
+    
+    # predict method for image classification
     def predict(self, image_path: str):
         image = Image.open(image_path).convert("RGB")
         inputs = self.processor(images=image, return_tensors="pt")
