@@ -1,6 +1,7 @@
 # will contains all the ui components
 import tkinter as tk
 from tkinter import ttk
+from tkinter import filedialog
 
 
 def create_button(parent, text, command, width=12, style=None):
@@ -45,3 +46,12 @@ def create_image_canvas(parent, width=300, height=300):
     """Create a canvas to preview images."""
     canvas = tk.Canvas(parent, width=width, height=height, bg="#ffffff", highlightthickness=1, highlightbackground="#cccccc")
     return canvas
+
+def save_image(image):
+    """Open save dialog and save PIL image"""
+    file_path = filedialog.asksaveasfilename(
+        defaultextension=".png",
+        filetypes=[("PNG files", "*.png"), ("All files", "*.*")]
+    )
+    if file_path:
+        image.save(file_path)

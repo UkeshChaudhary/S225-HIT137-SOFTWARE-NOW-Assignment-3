@@ -77,9 +77,12 @@ class MainWindow(tk.Tk):
 
         self.model_combo = ttk.Combobox(
             container,
-            values=["ViT (Classify)",],
+            values=["ViT (Classify)",
+                    "DeiT (Classify)", 
+                    "ResNet (Classify)",
+                    "Stable Diffusion (text2image)"],
             state="readonly",
-            width=22,
+            width=28,
         )
         self.model_combo.current(0)
         self.model_combo.pack(side="left", padx=8)
@@ -133,6 +136,8 @@ class MainWindow(tk.Tk):
             return "deit"
         if "resnet" in selection.lower():
             return "resnet"
+        if "diffusion" in selection.lower() or "text2image" in selection.lower():
+            return "text2image"
         return "vit"
 
     def load_model(self):
@@ -142,6 +147,9 @@ class MainWindow(tk.Tk):
             self._append_output(f"Loaded model: {model_key} -> {AVAILABLE_MODELS[model_key]}")
         except Exception as exc:
             self._append_output(f"Error loading model: {exc}")
+            
+        print("DEBUG: Model key selected ->", model_key)
+
 
     def browse_image(self):
         file_path = filedialog.askopenfilename(filetypes=[["Image files", "*.jpg *.jpeg *.png"]])
@@ -155,6 +163,25 @@ class MainWindow(tk.Tk):
         if not self.loaded_model:
             self._append_output("Please load a model first.")
             return
+        
+        model_key = self._parse_model_key()
+
+       
+        # ---- text2image model ----
+        if model_key == "text2image":
+            prompt = self.prompt_box.get("1.0", tk.END).strip()
+            if not prompt:
+                self._append_output("Please enter a prompt for text-to-image generation.")
+                return
+            image = self.loaded_model.predict(prompt)
+
+            self.tk_preview_image = ImageTk.PhotoImage(image.resize((380, 220)))
+            self.preview_canvas.delete("all")
+            self.preview_canvas.create_image(0, 0, anchor="nw", image=self.tk_preview_image)
+            self._append_output("Generated image from prompt.")
+            return
+
+        # ---- image classification models ----
         if self.input_mode.get() == "image":
             if not self.current_image_path:
                 self._append_output("Please browse and select an image.")
@@ -190,3 +217,5 @@ class MainWindow(tk.Tk):
             label = pred.get("label")
             score = pred.get("score")
             self._append_output(f"- {label}: {score:.4f}")
+
+
