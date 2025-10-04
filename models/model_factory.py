@@ -11,12 +11,9 @@ def get_model(model_key: str):
         return ViTModel(AVAILABLE_MODELS["vit"])
     
     # text2image model
-    elif model_key == "text2image":
+    if model_key == "text2image":
         return Text2ImageModel(AVAILABLE_MODELS["text2image"])
     
-    if model_key in models:
-        raise ValueError(f"UJnknown model key: {model_key} . Available models are: {list(models.keys())}"
-    )
     
     models = {
         "vit": ViTModel,
@@ -24,7 +21,11 @@ def get_model(model_key: str):
         "text2image": Text2ImageModel
 
     }
-
+    
+    # error handling for unknown model key
+    if model_key in models:
+        raise ValueError(f"UJnknown model key: {model_key} . Available models are: {list(models.keys())}"
+    )
 
 
     return models[model_key]()
